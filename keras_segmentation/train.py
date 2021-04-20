@@ -180,7 +180,17 @@ def train(model,
             preprocessing=preprocessing, read_image_type=read_image_type)
 
     if callbacks is None and (not checkpoints_path is  None) :
-        default_callback = ModelCheckpoint(
+        if validate:
+            default_callback = ModelCheckpoint(
+                filepath=checkpoints_path + ".{epoch:05d}",
+                save_weights_only=True,
+                verbose=True,
+                monitor='val_loss',
+                mode='min',
+                save_best_only=True
+            )
+        else:
+            default_callback = ModelCheckpoint(
                 filepath=checkpoints_path + ".{epoch:05d}",
                 save_weights_only=True,
                 verbose=True
