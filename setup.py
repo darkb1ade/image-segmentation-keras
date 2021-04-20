@@ -38,4 +38,4 @@ setup(name="keras_segmentation",
             "tests-default": ["tensorflow", "pytest"]
       }
 )
-=
+
