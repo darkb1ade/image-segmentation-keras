@@ -182,7 +182,7 @@ def train(model,
     if callbacks is None and (not checkpoints_path is  None) :
         if validate:
             default_callback = ModelCheckpoint(
-                filepath=checkpoints_path + ".{epoch:05d}",
+                filepath=checkpoints_path,
                 save_weights_only=True,
                 verbose=True,
                 monitor='val_loss',
@@ -191,7 +191,7 @@ def train(model,
             )
         else:
             default_callback = ModelCheckpoint(
-                filepath=checkpoints_path + ".{epoch:05d}",
+                filepath=checkpoints_path,
                 save_weights_only=True,
                 verbose=True
             )
